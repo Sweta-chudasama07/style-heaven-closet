@@ -352,9 +352,9 @@ export function HeavelyProvider({ children }: { children: ReactNode }) {
         .insert({
           user_id: session.user.id,
           name: look.name,
-          occasion: look.occasion,
-          vibe: look.vibe,
-          weather: look.weather,
+          occasion: look.occasion ?? null,
+          vibe: look.vibe ?? null,
+          weather: look.weather ?? null,
           item_ids: look.itemIds,
           beauty: look.beauty,
           score: look.score,
