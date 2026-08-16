@@ -14,7 +14,180 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      outfits: {
+        Row: {
+          beauty: Json
+          created_at: string
+          favorite: boolean
+          id: string
+          item_ids: string[]
+          name: string
+          occasion: string | null
+          photo_path: string | null
+          score: number | null
+          user_id: string
+          vibe: string | null
+          weather: string | null
+        }
+        Insert: {
+          beauty?: Json
+          created_at?: string
+          favorite?: boolean
+          id?: string
+          item_ids?: string[]
+          name: string
+          occasion?: string | null
+          photo_path?: string | null
+          score?: number | null
+          user_id: string
+          vibe?: string | null
+          weather?: string | null
+        }
+        Update: {
+          beauty?: Json
+          created_at?: string
+          favorite?: boolean
+          id?: string
+          item_ids?: string[]
+          name?: string
+          occasion?: string | null
+          photo_path?: string | null
+          score?: number | null
+          user_id?: string
+          vibe?: string | null
+          weather?: string | null
+        }
+        Relationships: []
+      }
+      photo_sessions: {
+        Row: {
+          caption: string | null
+          created_at: string
+          id: string
+          layout: string | null
+          photo_path: string
+          theme: string | null
+          user_id: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          layout?: string | null
+          photo_path: string
+          theme?: string | null
+          user_id: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          layout?: string | null
+          photo_path?: string
+          theme?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          streak: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id: string
+          streak?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          streak?: number
+        }
+        Relationships: []
+      }
+      style_preferences: {
+        Row: {
+          beauty_preferences: Json
+          favorite_colors: string[]
+          favorite_styles: string[]
+          preferred_occasions: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          beauty_preferences?: Json
+          favorite_colors?: string[]
+          favorite_styles?: string[]
+          preferred_occasions?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          beauty_preferences?: Json
+          favorite_colors?: string[]
+          favorite_styles?: string[]
+          preferred_occasions?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wardrobe_items: {
+        Row: {
+          category: string
+          color: string | null
+          created_at: string
+          favorite: boolean
+          id: string
+          image_path: string | null
+          name: string
+          occasion: string[]
+          season: string | null
+          secondary_colors: string[]
+          style: string | null
+          subcategory: string | null
+          user_id: string
+        }
+        Insert: {
+          category: string
+          color?: string | null
+          created_at?: string
+          favorite?: boolean
+          id?: string
+          image_path?: string | null
+          name: string
+          occasion?: string[]
+          season?: string | null
+          secondary_colors?: string[]
+          style?: string | null
+          subcategory?: string | null
+          user_id: string
+        }
+        Update: {
+          category?: string
+          color?: string | null
+          created_at?: string
+          favorite?: boolean
+          id?: string
+          image_path?: string | null
+          name?: string
+          occasion?: string[]
+          season?: string | null
+          secondary_colors?: string[]
+          style?: string | null
+          subcategory?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
