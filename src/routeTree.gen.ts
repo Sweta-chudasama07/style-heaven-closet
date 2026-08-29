@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as RemixRouteImport } from './routes/remix'
 import { Route as StyleMeRouteImport } from './routes/style-me'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthSignupRouteImport } from './routes/auth.signup'
@@ -29,6 +30,11 @@ const ClosetRoute = ClosetRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemixRoute = RemixRouteImport.update({
+  id: '/remix',
+  path: '/remix',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StyleMeRoute = StyleMeRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/closet'
     | '/dashboard'
+    | '/remix'
     | '/style-me'
     | '/auth/login'
     | '/auth/signup'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/closet'
     | '/dashboard'
+    | '/remix'
     | '/style-me'
     | '/auth/login'
     | '/auth/signup'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/closet'
     | '/dashboard'
+    | '/remix'
     | '/style-me'
     | '/auth/login'
     | '/auth/signup'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClosetRoute: typeof ClosetRoute
   DashboardRoute: typeof DashboardRoute
+  RemixRoute: typeof RemixRoute
   StyleMeRoute: typeof StyleMeRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthSignupRoute: typeof AuthSignupRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/remix': {
+      id: '/remix'
+      path: '/remix'
+      fullPath: '/remix'
+      preLoaderRoute: typeof RemixRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/style-me': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClosetRoute: ClosetRoute,
   DashboardRoute: DashboardRoute,
+  RemixRoute: RemixRoute,
   StyleMeRoute: StyleMeRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthSignupRoute: AuthSignupRoute,
