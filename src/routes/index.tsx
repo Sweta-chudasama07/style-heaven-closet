@@ -35,6 +35,15 @@ function Home() {
   const { startDemo, session } = useHeavely();
   const navigate = useNavigate();
 
+  function pick(id: string) {
+    if (id === "closet") return void navigate({ to: "/closet" });
+    if (id === "style") return void navigate({ to: "/style-me" });
+    if (id === "remix") return void navigate({ to: "/remix" });
+    if (id === "booth") return void navigate({ to: "/photobooth" });
+    return void navigate({ to: "/looks" });
+  }
+
+
   return (
     <Shell>
       <section className="relative overflow-hidden px-4 pt-14 pb-24 sm:pt-20">
