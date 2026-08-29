@@ -10,11 +10,72 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BeautyRouteImport } from './routes/beauty'
+import { Route as ClosetRouteImport } from './routes/closet'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as LooksRouteImport } from './routes/looks'
+import { Route as PhotoboothRouteImport } from './routes/photobooth'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RemixRouteImport } from './routes/remix'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StyleMeRouteImport } from './routes/style-me'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as AuthSignupRouteImport } from './routes/auth.signup'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeautyRoute = BeautyRouteImport.update({
+  id: '/beauty',
+  path: '/beauty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClosetRoute = ClosetRouteImport.update({
+  id: '/closet',
+  path: '/closet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LooksRoute = LooksRouteImport.update({
+  id: '/looks',
+  path: '/looks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoboothRoute = PhotoboothRouteImport.update({
+  id: '/photobooth',
+  path: '/photobooth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemixRoute = RemixRouteImport.update({
+  id: '/remix',
+  path: '/remix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StyleMeRoute = StyleMeRouteImport.update({
+  id: '/style-me',
+  path: '/style-me',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
@@ -22,31 +83,120 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/auth/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthSignupRoute = AuthSignupRouteImport.update({
+  id: '/auth/signup',
+  path: '/auth/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/beauty': typeof BeautyRoute
+  '/closet': typeof ClosetRoute
+  '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
+  '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
+  '/remix': typeof RemixRoute
+  '/settings': typeof SettingsRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/beauty': typeof BeautyRoute
+  '/closet': typeof ClosetRoute
+  '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
+  '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
+  '/remix': typeof RemixRoute
+  '/settings': typeof SettingsRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/beauty': typeof BeautyRoute
+  '/closet': typeof ClosetRoute
+  '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
+  '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
+  '/remix': typeof RemixRoute
+  '/settings': typeof SettingsRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/login'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/beauty'
+    | '/closet'
+    | '/dashboard'
+    | '/looks'
+    | '/photobooth'
+    | '/profile'
+    | '/remix'
+    | '/settings'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/login'
-  id: '__root__' | '/' | '/auth/login'
+  to:
+    | '/'
+    | '/about'
+    | '/beauty'
+    | '/closet'
+    | '/dashboard'
+    | '/looks'
+    | '/photobooth'
+    | '/profile'
+    | '/remix'
+    | '/settings'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/beauty'
+    | '/closet'
+    | '/dashboard'
+    | '/looks'
+    | '/photobooth'
+    | '/profile'
+    | '/remix'
+    | '/settings'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BeautyRoute: typeof BeautyRoute
+  ClosetRoute: typeof ClosetRoute
+  DashboardRoute: typeof DashboardRoute
+  LooksRoute: typeof LooksRoute
+  PhotoboothRoute: typeof PhotoboothRoute
+  ProfileRoute: typeof ProfileRoute
+  RemixRoute: typeof RemixRoute
+  SettingsRoute: typeof SettingsRoute
+  StyleMeRoute: typeof StyleMeRoute
   AuthLoginRoute: typeof AuthLoginRoute
+  AuthSignupRoute: typeof AuthSignupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +208,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beauty': {
+      id: '/beauty'
+      path: '/beauty'
+      fullPath: '/beauty'
+      preLoaderRoute: typeof BeautyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/closet': {
+      id: '/closet'
+      path: '/closet'
+      fullPath: '/closet'
+      preLoaderRoute: typeof ClosetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/looks': {
+      id: '/looks'
+      path: '/looks'
+      fullPath: '/looks'
+      preLoaderRoute: typeof LooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photobooth': {
+      id: '/photobooth'
+      path: '/photobooth'
+      fullPath: '/photobooth'
+      preLoaderRoute: typeof PhotoboothRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/remix': {
+      id: '/remix'
+      path: '/remix'
+      fullPath: '/remix'
+      preLoaderRoute: typeof RemixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/style-me': {
+      id: '/style-me'
+      path: '/style-me'
+      fullPath: '/style-me'
+      preLoaderRoute: typeof StyleMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/login': {
       id: '/auth/login'
       path: '/auth/login'
@@ -65,12 +285,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/signup': {
+      id: '/auth/signup'
+      path: '/auth/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BeautyRoute: BeautyRoute,
+  ClosetRoute: ClosetRoute,
+  DashboardRoute: DashboardRoute,
+  LooksRoute: LooksRoute,
+  PhotoboothRoute: PhotoboothRoute,
+  ProfileRoute: ProfileRoute,
+  RemixRoute: RemixRoute,
+  SettingsRoute: SettingsRoute,
+  StyleMeRoute: StyleMeRoute,
   AuthLoginRoute: AuthLoginRoute,
+  AuthSignupRoute: AuthSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
