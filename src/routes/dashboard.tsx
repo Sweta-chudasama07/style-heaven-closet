@@ -64,6 +64,18 @@ function Dashboard() {
           </div>
         </header>
 
+        <section className="mt-8">
+          <ClosetRoom3D
+            className="h-[360px] w-full overflow-hidden rounded-[2rem] sm:h-[460px]"
+            fallbackLabel="Opening your glass studio…"
+            onPick={pick}
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Drag to look around your studio — tap a pedestal to open that room.
+          </p>
+        </section>
+
+
         <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {TILES.map((t) => {
             const Icon = t.icon;
