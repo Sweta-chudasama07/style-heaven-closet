@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BeautyRouteImport } from './routes/beauty'
 import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as LooksRouteImport } from './routes/looks'
 import { Route as PhotoboothRouteImport } from './routes/photobooth'
 import { Route as RemixRouteImport } from './routes/remix'
 import { Route as StyleMeRouteImport } from './routes/style-me'
@@ -37,6 +38,11 @@ const ClosetRoute = ClosetRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LooksRoute = LooksRouteImport.update({
+  id: '/looks',
+  path: '/looks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PhotoboothRoute = PhotoboothRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/beauty'
     | '/closet'
     | '/dashboard'
+    | '/looks'
     | '/photobooth'
     | '/remix'
     | '/style-me'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/beauty'
     | '/closet'
     | '/dashboard'
+    | '/looks'
     | '/photobooth'
     | '/remix'
     | '/style-me'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/beauty'
     | '/closet'
     | '/dashboard'
+    | '/looks'
     | '/photobooth'
     | '/remix'
     | '/style-me'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   BeautyRoute: typeof BeautyRoute
   ClosetRoute: typeof ClosetRoute
   DashboardRoute: typeof DashboardRoute
+  LooksRoute: typeof LooksRoute
   PhotoboothRoute: typeof PhotoboothRoute
   RemixRoute: typeof RemixRoute
   StyleMeRoute: typeof StyleMeRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/looks': {
+      id: '/looks'
+      path: '/looks'
+      fullPath: '/looks'
+      preLoaderRoute: typeof LooksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/photobooth': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   BeautyRoute: BeautyRoute,
   ClosetRoute: ClosetRoute,
   DashboardRoute: DashboardRoute,
+  LooksRoute: LooksRoute,
   PhotoboothRoute: PhotoboothRoute,
   RemixRoute: RemixRoute,
   StyleMeRoute: StyleMeRoute,
