@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ClosetRoom3D } from "@/components/heavely/three/scenes";
 import { Sparkles, Shirt, Camera, BookHeart } from "lucide-react";
 import { Shell } from "@/components/heavely/Shell";
 import { Button } from "@/components/ui/button";
