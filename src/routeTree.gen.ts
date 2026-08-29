@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as StyleMeRouteImport } from './routes/style-me'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthSignupRouteImport } from './routes/auth.signup'
 
@@ -30,6 +31,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StyleMeRoute = StyleMeRouteImport.update({
+  id: '/style-me',
+  path: '/style-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/auth/login',
   path: '/auth/login',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
 }
@@ -60,22 +68,42 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
+  '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/signup': typeof AuthSignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/closet' | '/dashboard' | '/auth/login' | '/auth/signup'
+  fullPaths:
+    | '/'
+    | '/closet'
+    | '/dashboard'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/closet' | '/dashboard' | '/auth/login' | '/auth/signup'
+  to:
+    | '/'
+    | '/closet'
+    | '/dashboard'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
   id:
-    '__root__' | '/' | '/closet' | '/dashboard' | '/auth/login' | '/auth/signup'
+    | '__root__'
+    | '/'
+    | '/closet'
+    | '/dashboard'
+    | '/style-me'
+    | '/auth/login'
+    | '/auth/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClosetRoute: typeof ClosetRoute
   DashboardRoute: typeof DashboardRoute
+  StyleMeRoute: typeof StyleMeRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthSignupRoute: typeof AuthSignupRoute
 }
@@ -103,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/style-me': {
+      id: '/style-me'
+      path: '/style-me'
+      fullPath: '/style-me'
+      preLoaderRoute: typeof StyleMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/login': {
       id: '/auth/login'
       path: '/auth/login'
@@ -124,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClosetRoute: ClosetRoute,
   DashboardRoute: DashboardRoute,
+  StyleMeRoute: StyleMeRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthSignupRoute: AuthSignupRoute,
 }
