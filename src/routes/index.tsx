@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useHeavely } from "@/lib/heavely/store";
 import { DEMO_ITEMS } from "@/lib/heavely/demo";
 import { ItemThumb } from "@/components/heavely/ItemTile";
+import { HeroScene3D } from "@/components/heavely/three/scenes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
