@@ -15,6 +15,7 @@ import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as LooksRouteImport } from './routes/looks'
 import { Route as PhotoboothRouteImport } from './routes/photobooth'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RemixRouteImport } from './routes/remix'
 import { Route as StyleMeRouteImport } from './routes/style-me'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
@@ -50,6 +51,11 @@ const PhotoboothRoute = PhotoboothRouteImport.update({
   path: '/photobooth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RemixRoute = RemixRouteImport.update({
   id: '/remix',
   path: '/remix',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/looks': typeof LooksRoute
   '/photobooth': typeof PhotoboothRoute
+  '/profile': typeof ProfileRoute
   '/remix': typeof RemixRoute
   '/style-me': typeof StyleMeRoute
   '/auth/login': typeof AuthLoginRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/looks'
     | '/photobooth'
+    | '/profile'
     | '/remix'
     | '/style-me'
     | '/auth/login'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/looks'
     | '/photobooth'
+    | '/profile'
     | '/remix'
     | '/style-me'
     | '/auth/login'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/looks'
     | '/photobooth'
+    | '/profile'
     | '/remix'
     | '/style-me'
     | '/auth/login'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   LooksRoute: typeof LooksRoute
   PhotoboothRoute: typeof PhotoboothRoute
+  ProfileRoute: typeof ProfileRoute
   RemixRoute: typeof RemixRoute
   StyleMeRoute: typeof StyleMeRoute
   AuthLoginRoute: typeof AuthLoginRoute
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PhotoboothRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/remix': {
       id: '/remix'
       path: '/remix'
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   LooksRoute: LooksRoute,
   PhotoboothRoute: PhotoboothRoute,
+  ProfileRoute: ProfileRoute,
   RemixRoute: RemixRoute,
   StyleMeRoute: StyleMeRoute,
   AuthLoginRoute: AuthLoginRoute,
