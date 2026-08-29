@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { LookCard } from "@/components/heavely/LookCard";
 import { EmptyState, Loading } from "@/components/heavely/EmptyState";
 import { useHeavely } from "@/lib/heavely/store";
-import { generateLooks, parseStyleRequest, signature } from "@/lib/heavely/engine";
+import { generateLooks, parseStyleRequest, signature, type StyleRequest } from "@/lib/heavely/engine";
 import { FEELINGS, OCCASIONS, STYLES, WEATHERS, type Look } from "@/lib/heavely/types";
 import { cn } from "@/lib/utils";
 
