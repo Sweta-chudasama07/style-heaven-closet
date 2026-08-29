@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ClosetRoom3D } from "@/components/heavely/three/scenes";
 import { Sparkles, Shirt, Camera, BookHeart } from "lucide-react";
 import { Shell } from "@/components/heavely/Shell";
 import { Button } from "@/components/ui/button";
@@ -29,9 +30,18 @@ const TILES = [
 
 function Dashboard() {
   const { name, items, looks, photos, streak, toggleItemFavorite } = useHeavely();
+  const navigate = useNavigate();
   const recent = items.slice(0, 6);
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+
+  function pick(id: string) {
+    if (id === "closet") return void navigate({ to: "/closet" });
+    if (id === "style") return void navigate({ to: "/style-me" });
+    if (id === "booth") return void navigate({ to: "/photobooth" });
+    return void navigate({ to: "/looks" });
+  }
+
 
   return (
     <Shell>
@@ -53,6 +63,18 @@ function Dashboard() {
             </Button>
           </div>
         </header>
+
+        <section className="mt-8">
+          <ClosetRoom3D
+            className="h-[360px] w-full overflow-hidden rounded-[2rem] sm:h-[460px]"
+            fallbackLabel="Opening your glass studio…"
+            onPick={pick}
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Drag to look around your studio — tap a pedestal to open that room.
+          </p>
+        </section>
+
 
         <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {TILES.map((t) => {

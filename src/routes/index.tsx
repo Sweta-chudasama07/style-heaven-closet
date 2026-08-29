@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useHeavely } from "@/lib/heavely/store";
 import { DEMO_ITEMS } from "@/lib/heavely/demo";
 import { ItemThumb } from "@/components/heavely/ItemTile";
+import { HeroScene3D } from "@/components/heavely/three/scenes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,6 +35,15 @@ const FLOATERS = DEMO_ITEMS.filter((i) =>
 function Home() {
   const { startDemo, session } = useHeavely();
   const navigate = useNavigate();
+
+  function pick(id: string) {
+    if (id === "closet") return void navigate({ to: "/closet" });
+    if (id === "style") return void navigate({ to: "/style-me" });
+    if (id === "remix") return void navigate({ to: "/remix" });
+    if (id === "booth") return void navigate({ to: "/photobooth" });
+    return void navigate({ to: "/looks" });
+  }
+
 
   return (
     <Shell>
@@ -86,6 +96,18 @@ function Home() {
             — no account needed to look around.
           </p>
         </div>
+
+        <div className="mx-auto mt-12 max-w-4xl">
+          <HeroScene3D
+            className="h-[340px] w-full overflow-hidden rounded-[2rem] sm:h-[440px]"
+            fallbackLabel="Blowing the glass…"
+            onPick={pick}
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Drag to spin the studio — tap a glass piece to step inside.
+          </p>
+        </div>
+
 
         <ul className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {FLOATERS.map((item, i) => (
