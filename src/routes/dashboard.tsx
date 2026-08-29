@@ -29,9 +29,18 @@ const TILES = [
 
 function Dashboard() {
   const { name, items, looks, photos, streak, toggleItemFavorite } = useHeavely();
+  const navigate = useNavigate();
   const recent = items.slice(0, 6);
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+
+  function pick(id: string) {
+    if (id === "closet") return void navigate({ to: "/closet" });
+    if (id === "style") return void navigate({ to: "/style-me" });
+    if (id === "booth") return void navigate({ to: "/photobooth" });
+    return void navigate({ to: "/looks" });
+  }
+
 
   return (
     <Shell>
