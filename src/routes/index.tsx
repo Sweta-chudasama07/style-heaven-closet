@@ -87,6 +87,18 @@ function Home() {
           </p>
         </div>
 
+        <div className="mx-auto mt-12 max-w-4xl">
+          <HeroScene3D
+            className="h-[340px] w-full overflow-hidden rounded-[2rem] sm:h-[440px]"
+            fallbackLabel="Blowing the glass…"
+            onPick={pick}
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Drag to spin the studio — tap a glass piece to step inside.
+          </p>
+        </div>
+
+
         <ul className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {FLOATERS.map((item, i) => (
             <li
