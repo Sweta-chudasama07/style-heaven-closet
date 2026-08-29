@@ -77,16 +77,16 @@ function StyleMe() {
     setBusy(true);
     const parsed = text.trim()
       ? parseStyleRequest(text, items, { occasions: OCCASIONS, vibes: STYLES, weathers: WEATHERS })
-      : {};
-    const next = generateLooks(items, {
-      occasion: occasion ?? parsed.occasion,
-      vibe: vibe ?? parsed.vibe,
-      weather: weather ?? parsed.weather,
-      feeling,
-      lockedIds: parsed.lockedIds,
-      prefs,
-      avoidSignatures: avoid,
-    });
+      : { occasion: undefined, vibe: undefined, weather: undefined, lockedIds: [] as string[] };
+    const req: StyleRequest = { prefs, avoidSignatures: avoid, lockedIds: parsed.lockedIds ?? [] };
+    const o = occasion ?? parsed.occasion;
+    const v = vibe ?? parsed.vibe;
+    const w = weather ?? parsed.weather;
+    if (o) req.occasion = o;
+    if (v) req.vibe = v;
+    if (w) req.weather = w;
+    if (feeling) req.feeling = feeling;
+    const next = generateLooks(items, req);
     window.setTimeout(() => {
       setLooks(next);
       setBusy(false);
