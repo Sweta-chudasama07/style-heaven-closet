@@ -33,7 +33,7 @@ function Chips({
 }: {
   label: string;
   options: string[];
-  value?: string;
+  value: string | undefined;
   onChange: (v: string | undefined) => void;
 }) {
   return (
