@@ -67,6 +67,19 @@ function Remix() {
           ) : null}
         </div>
 
+        <section className="mt-8">
+          <Mannequin3D
+            className="h-[420px] w-full overflow-hidden rounded-[2rem] sm:h-[520px]"
+            fallbackLabel="Shaping the glass figure…"
+            layers={layers}
+            onToggle={toggle}
+          />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Drag to turn the figure — tap a piece to lock it, then remix around it.
+          </p>
+        </section>
+
+
         {look ? (
           <div className="mt-8">
             <LookCard
