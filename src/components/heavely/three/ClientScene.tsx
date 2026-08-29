@@ -1,11 +1,11 @@
-import { Suspense, lazy, useEffect, useState, type ComponentType } from "react";
+import { Suspense, lazy, useEffect, useState, type ComponentType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /** Renders children only after hydration — WebGL must never run on the server. */
-export function ClientOnly({ children }: { children: React.ReactNode }) {
+export function ClientOnly({ children, fallback }: { children: ReactNode; fallback?: ReactNode }) {
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
-  return ready ? <>{children}</> : null;
+  return ready ? <>{children}</> : <>{fallback ?? null}</>;
 }
 
 export function SceneFallback({ className, label }: { className?: string; label?: string }) {
@@ -29,10 +29,13 @@ export function lazyScene<P extends object>(loader: () => Promise<{ default: Com
       className?: string;
       fallbackLabel?: string;
     };
+    const holder = (
+      <SceneFallback {...(className ? { className } : {})} {...(fallbackLabel ? { label: fallbackLabel } : {})} />
+    );
     return (
-      <ClientOnly>
-        <Suspense fallback={<SceneFallback className={className} {...(fallbackLabel ? { label: fallbackLabel } : {})} />}>
-          <Lazy {...(rest as P)} />
+      <ClientOnly fallback={holder}>
+        <Suspense fallback={holder}>
+          <Lazy {...({ ...rest, className } as unknown as P)} />
         </Suspense>
       </ClientOnly>
     );
