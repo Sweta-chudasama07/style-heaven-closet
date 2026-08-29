@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeautyRouteImport } from './routes/beauty'
 import { Route as ClosetRouteImport } from './routes/closet'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as RemixRouteImport } from './routes/remix'
@@ -20,6 +21,11 @@ import { Route as AuthSignupRouteImport } from './routes/auth.signup'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeautyRoute = BeautyRouteImport.update({
+  id: '/beauty',
+  path: '/beauty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClosetRoute = ClosetRouteImport.update({
@@ -55,6 +61,7 @@ const AuthSignupRoute = AuthSignupRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
   '/remix': typeof RemixRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
   '/remix': typeof RemixRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/beauty': typeof BeautyRoute
   '/closet': typeof ClosetRoute
   '/dashboard': typeof DashboardRoute
   '/remix': typeof RemixRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/beauty'
     | '/closet'
     | '/dashboard'
     | '/remix'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/beauty'
     | '/closet'
     | '/dashboard'
     | '/remix'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/beauty'
     | '/closet'
     | '/dashboard'
     | '/remix'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeautyRoute: typeof BeautyRoute
   ClosetRoute: typeof ClosetRoute
   DashboardRoute: typeof DashboardRoute
   RemixRoute: typeof RemixRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beauty': {
+      id: '/beauty'
+      path: '/beauty'
+      fullPath: '/beauty'
+      preLoaderRoute: typeof BeautyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/closet': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeautyRoute: BeautyRoute,
   ClosetRoute: ClosetRoute,
   DashboardRoute: DashboardRoute,
   RemixRoute: RemixRoute,
