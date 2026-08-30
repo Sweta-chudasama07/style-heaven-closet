@@ -13,6 +13,7 @@ import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { useHeavely } from "@/lib/heavely/store";
 import { Button } from "@/components/ui/button";
+import { BuddyDock } from "@/components/heavely/BuddyDock";
 
 const NAV = [
   { to: "/dashboard", label: "Studio" },
@@ -128,6 +129,8 @@ export function Shell({ children }: { children: ReactNode }) {
       </header>
 
       <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+
+      <BuddyDock />
 
       <Footer />
 
