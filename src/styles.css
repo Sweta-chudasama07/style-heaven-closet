@@ -99,7 +99,7 @@
   --apricot: oklch(0.804 0.108 49);
   --dusty: oklch(0.728 0.113 3.8);
   --ink: oklch(0.391 0.049 4.3);
-  --gradient-heaven: linear-gradient(160deg, oklch(0.902 0.06 350.3) 0%, oklch(0.922 0.056 67.9) 45%, oklch(0.935 0.019 235.7) 100%);
+  --gradient-heaven: linear-gradient(160deg, oklch(0.958 0.028 350.3) 0%, oklch(0.968 0.026 67.9) 45%, oklch(0.965 0.014 235.7) 100%);
   --gradient-blush: linear-gradient(135deg, oklch(0.902 0.06 350.3), oklch(0.804 0.108 49));
   --shadow-soft: 0 18px 45px -22px oklch(0.55 0.09 5 / 0.35);
   --shadow-float: 0 26px 60px -28px oklch(0.55 0.1 40 / 0.35);
