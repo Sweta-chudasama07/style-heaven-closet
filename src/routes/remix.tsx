@@ -45,6 +45,26 @@ function Remix() {
 
   const lockedSet = useMemo(() => new Set(locked), [locked]);
 
+  const layers = useMemo<LayerSpec[]>(() => {
+    const source = look ? look.itemIds.map((id) => items.find((i) => i.id === id)) : items;
+    const seen = new Set<LayerSpec["slot"]>();
+    const out: LayerSpec[] = [];
+    for (const item of source) {
+      if (!item) continue;
+      const slot = SLOT_MAP[item.category];
+      if (!slot || seen.has(slot)) continue;
+      seen.add(slot);
+      out.push({
+        id: item.id,
+        label: item.name,
+        slot,
+        color: hexFor(item.color ?? undefined),
+        locked: lockedSet.has(item.id),
+      });
+    }
+    return out;
+  }, [look, items, lockedSet]);
+
   function toggle(id: string) {
     setLocked((prev) => (prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]));
   }
