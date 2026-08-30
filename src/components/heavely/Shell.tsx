@@ -130,6 +130,8 @@ export function Shell({ children }: { children: ReactNode }) {
 
       <main className="flex-1 pb-24 lg:pb-0">{children}</main>
 
+      <BuddyDock />
+
       <Footer />
 
       <nav

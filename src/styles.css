@@ -229,6 +229,17 @@
   100% { opacity: 0; }
 }
 
+@keyframes buddy-wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  70% { transform: rotate(-22deg); }
+  80% { transform: rotate(8deg); }
+  90% { transform: rotate(-16deg); }
+}
+
+.buddy-wave {
+  animation: buddy-wave 3.6s ease-in-out infinite;
+}
+
 @utility float-slow {
   animation: heavely-float 7s ease-in-out infinite;
 }
