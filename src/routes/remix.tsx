@@ -9,6 +9,20 @@ import { EmptyState } from "@/components/heavely/EmptyState";
 import { useHeavely } from "@/lib/heavely/store";
 import { generateLooks, signature } from "@/lib/heavely/engine";
 import type { Look } from "@/lib/heavely/types";
+import { Mannequin3D, hexFor } from "@/components/heavely/three/scenes";
+import type { LayerSpec } from "@/components/heavely/three/MannequinScene";
+
+const SLOT_MAP: Record<string, LayerSpec["slot"]> = {
+  top: "top",
+  dress: "top",
+  ethnic: "top",
+  outerwear: "top",
+  bottom: "bottom",
+  shoes: "shoes",
+  jewellery: "jewellery",
+  bag: "bag",
+  accessory: "bag",
+};
 
 export const Route = createFileRoute("/remix")({
   head: () => ({
