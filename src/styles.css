@@ -240,6 +240,49 @@
   animation: buddy-wave 3.6s ease-in-out infinite;
 }
 
+@keyframes buddy-hop {
+  0% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-14px) scale(1.06, 0.94); }
+  55% { transform: translateY(0) scale(0.94, 1.06); }
+  75% { transform: translateY(-5px) scale(1.02, 0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.buddy-hop {
+  animation: buddy-hop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+@keyframes buddy-spin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.buddy-spin {
+  animation: buddy-spin 0.8s ease-in-out;
+}
+
+@keyframes buddy-sparkle {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(1.1); }
+}
+
+.buddy-sparkle {
+  animation: buddy-sparkle 0.9s ease-out forwards;
+}
+
+@keyframes tile-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.18) rotate(-9deg); }
+  70% { transform: scale(0.95) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.tile-pop {
+  animation: tile-pop 0.5s ease-out;
+}
+
+
 @utility float-slow {
   animation: heavely-float 7s ease-in-out infinite;
 }
