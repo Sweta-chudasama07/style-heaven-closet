@@ -124,7 +124,7 @@ export function HeroCarousel() {
     <div
       className="relative w-full overflow-hidden"
       style={{
-        backgroundColor: IMAGES[activeIndex].bg,
+        backgroundColor: IMAGES[activeIndex]!.bg,
         transition: `background-color 650ms ${EASE}`,
         fontFamily: "'Inter', sans-serif",
       }}
