@@ -47,6 +47,8 @@ function Home() {
 
   return (
     <Shell>
+      <HeroCarousel />
+
       <section className="relative overflow-hidden px-4 pt-14 pb-24 sm:pt-20">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           {[
@@ -64,13 +66,12 @@ function Home() {
 
         <div className="mx-auto max-w-3xl text-center">
           <p className="script text-2xl text-muted-foreground">a personal style studio</p>
-          <Wordmark className="mt-2 block text-5xl sm:text-7xl" />
           <h1 className="mt-6 font-display text-3xl leading-tight sm:text-5xl">
             Wear your own kind of heaven.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Your wardrobe already has more possibilities than you think. HEAVELY turns what you own into
-            complete, coordinated looks — outfit, jewellery, accessories, hair and makeup.
+            HEAVELY turns what you own into complete, coordinated looks — outfit, jewellery,
+            accessories, hair and makeup.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button size="lg" asChild>
@@ -89,24 +90,8 @@ function Home() {
               Try the demo closet
             </Button>
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">
-            <Link to="/about" className="underline underline-offset-4">
-              Explore HEAVELY
-            </Link>{" "}
-            — no account needed to look around.
-          </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-4xl">
-          <HeroScene3D
-            className="h-[340px] w-full overflow-hidden rounded-[2rem] sm:h-[440px]"
-            fallbackLabel="Blowing the glass…"
-            onPick={pick}
-          />
-          <p className="mt-2 text-center text-xs text-muted-foreground">
-            Drag to spin the studio — tap a glass piece to step inside.
-          </p>
-        </div>
 
 
         <ul className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
