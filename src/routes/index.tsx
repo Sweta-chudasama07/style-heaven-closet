@@ -1,11 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Camera, Palette, Shirt, Sparkles, Wand2 } from "lucide-react";
-import { Shell, Wordmark } from "@/components/heavely/Shell";
+import { Shell } from "@/components/heavely/Shell";
 import { Button } from "@/components/ui/button";
 import { useHeavely } from "@/lib/heavely/store";
 import { DEMO_ITEMS } from "@/lib/heavely/demo";
 import { ItemThumb } from "@/components/heavely/ItemTile";
-import { HeroScene3D } from "@/components/heavely/three/scenes";
+import { HeroCarousel } from "@/components/heavely/HeroCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,15 +35,6 @@ const FLOATERS = DEMO_ITEMS.filter((i) =>
 function Home() {
   const { startDemo, session } = useHeavely();
   const navigate = useNavigate();
-
-  function pick(id: string) {
-    if (id === "closet") return void navigate({ to: "/closet" });
-    if (id === "style") return void navigate({ to: "/style-me" });
-    if (id === "remix") return void navigate({ to: "/remix" });
-    if (id === "booth") return void navigate({ to: "/photobooth" });
-    return void navigate({ to: "/looks" });
-  }
-
 
   return (
     <Shell>
