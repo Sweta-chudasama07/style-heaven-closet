@@ -103,6 +103,13 @@ export function ItemTile({
   onLock?: () => void;
   compact?: boolean;
 }) {
+  const [popping, setPopping] = useState(false);
+
+  const handlePop = () => {
+    setPopping(true);
+    window.setTimeout(() => setPopping(false), 260);
+  };
+
   return (
     <div className="group relative">
       <button
@@ -127,6 +134,22 @@ export function ItemTile({
             </p>
           </div>
         </div>
+      </button>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePop();
+        }}
+        onPointerDown={handlePop}
+        aria-label={item.category}
+        className={cn(
+          "absolute left-3 top-3 flex size-8 items-center justify-center rounded-full bg-card/90 p-1.5 text-muted-foreground shadow-sm backdrop-blur-sm transition-transform duration-200 ease-out active:scale-75",
+          popping && "icon-pop",
+        )}
+      >
+        <CategoryIcon category={item.category} />
       </button>
 
       <div className="absolute right-3 top-3 flex flex-col gap-1.5">
@@ -156,3 +179,4 @@ export function ItemTile({
     </div>
   );
 }
+
