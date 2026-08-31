@@ -1,6 +1,8 @@
-import { Heart, Lock, LockOpen } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { Heart, Lock, LockOpen, Gem, ShoppingBag, Glasses, Footprints } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Item } from "@/lib/heavely/types";
+import type { Category, Item } from "@/lib/heavely/types";
+
 
 const SWATCH: Record<string, string> = {
   pink: "linear-gradient(140deg,#f9d7e0,#efb3c4)",
@@ -23,6 +25,44 @@ const SWATCH: Record<string, string> = {
   pearl: "linear-gradient(140deg,#fdf8f6,#e6dcd8)",
   multi: "linear-gradient(140deg,#f9d7e0,#d6e6f6,#e6dcf4)",
 };
+
+function CategoryIcon({ category, className }: { category: Category; className?: string }) {
+  const common = "size-full";
+  const paths: Record<Category, ReactNode> = {
+    top: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={common}>
+        <path d="M9 3h6c.5 0 1 .2 1.4.6l3 3c.8.8.2 2-1 2h-2v9c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-9H5.6c-1.2 0-1.8-1.2-1-2l3-3C8 3.2 8.5 3 9 3z" />
+      </svg>
+    ),
+    bottom: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={common}>
+        <path d="M7 3h10v4c0 .6-.4 1-1 1h-1v11c0 .6-.4 1-1 1h-2c-.6 0-1-.4-1-1v-5h-2v5c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V8H5c-.6 0-1-.4-1-1V3z" />
+      </svg>
+    ),
+    dress: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={common}>
+        <path d="M8 3c0 1.7 1.3 3 3 3s3-1.3 3-3h2l3 14c.3 1.3-.7 2.4-2 2.4H7c-1.3 0-2.3-1.1-2-2.4L8 3z" />
+      </svg>
+    ),
+    ethnic: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={common}>
+        <path d="M8 3h8l1 5 2 11c.2 1.1-.7 2-1.8 2H6.8c-1.1 0-2-.9-1.8-2l2-11z" />
+        <path d="M7 8h10" />
+      </svg>
+    ),
+    outerwear: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={common}>
+        <path d="M8 3h8c.5 0 1 .2 1.4.6l3 3c.8.8.2 2-1 2h-2v11c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-11H5.6c-1.2 0-1.8-1.2-1-2l3-3C8 3.2 8.5 3 9 3z" />
+        <path d="M12 4v16" />
+      </svg>
+    ),
+    shoes: <Footprints className={common} />,
+    jewellery: <Gem className={common} />,
+    bag: <ShoppingBag className={common} />,
+    accessory: <Glasses className={common} />,
+  };
+  return <span className={cn("inline-flex items-center justify-center", className)}>{paths[category]}</span>;
+}
 
 export function ItemThumb({ item, className }: { item: Item; className?: string }) {
   if (item.imageUrl) {
@@ -47,6 +87,7 @@ export function ItemThumb({ item, className }: { item: Item; className?: string 
   );
 }
 
+
 export function ItemTile({
   item,
   onFavorite,
@@ -62,6 +103,13 @@ export function ItemTile({
   onLock?: () => void;
   compact?: boolean;
 }) {
+  const [popping, setPopping] = useState(false);
+
+  const handlePop = () => {
+    setPopping(true);
+    window.setTimeout(() => setPopping(false), 260);
+  };
+
   return (
     <div className="group relative">
       <button
@@ -86,6 +134,22 @@ export function ItemTile({
             </p>
           </div>
         </div>
+      </button>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePop();
+        }}
+        onPointerDown={handlePop}
+        aria-label={item.category}
+        className={cn(
+          "absolute left-3 top-3 flex size-8 items-center justify-center rounded-full bg-card/90 p-1.5 text-muted-foreground shadow-sm backdrop-blur-sm transition-transform duration-200 ease-out active:scale-75",
+          popping && "icon-pop",
+        )}
+      >
+        <CategoryIcon category={item.category} />
       </button>
 
       <div className="absolute right-3 top-3 flex flex-col gap-1.5">
@@ -115,3 +179,4 @@ export function ItemTile({
     </div>
   );
 }
+
