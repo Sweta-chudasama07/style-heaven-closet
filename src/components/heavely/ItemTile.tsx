@@ -1,6 +1,8 @@
-import { Heart, Lock, LockOpen } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { Heart, Lock, LockOpen, Gem, ShoppingBag, Glasses, Footprints } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Item } from "@/lib/heavely/types";
+import type { Category, Item } from "@/lib/heavely/types";
+
 
 const SWATCH: Record<string, string> = {
   pink: "linear-gradient(140deg,#f9d7e0,#efb3c4)",
